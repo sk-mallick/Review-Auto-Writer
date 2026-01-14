@@ -5,35 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Review ENGLISHJIBI Classes</title>
     <meta name="description" content="Quickly write a review for Krishna Tuition - ENGLISHJIBI Classes">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#0f172a">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            /* Refined Color Palette */
-            --primary-blue: #3B82F6;
-            --primary-blue-hover: #2563EB;
-            --primary-text: #111827;
-            --secondary-text: #6B7280;
-            --accent-green: #10B981;
+            /* Dark & Classy Palette */
+            --primary: #6366f1; /* Indigo 500 */
+            --primary-dark: #4f46e5; /* Indigo 600 */
+            --primary-glow: rgba(99, 102, 241, 0.4);
             
-            /* Background Gradients */
-            --bg-gradient: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%);
-            --card-bg: #FFFFFF;
+            --text-main: #F8FAFC; /* Slate 50 */
+            --text-muted: #94A3B8; /* Slate 400 */
+            --text-dim: #475569; /* Slate 600 */
+            
+            /* Backgrounds */
+            --page-bg: #020617; /* Slate 950 */
+            --card-bg: rgba(15, 23, 42, 0.6); /* Glassy Slate 900 */
+            --input-bg: rgba(30, 41, 59, 0.5); /* Glassy Slate 800 */
             
             /* UI Elements */
-            --border-radius: 16px;
-            --btn-radius: 12px;
-            --input-bg: #F9FAFB;
-            --border-color: #E5E7EB;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-sm: 12px;
             
-            /* Shadows */
-            --shadow-card: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            --shadow-btn: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
+            /* Shadows & Effects */
+            --border-light: rgba(255, 255, 255, 0.1);
+            --shadow-deep: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            --focus-ring: 0 0 0 2px var(--primary);
         }
 
         * {
@@ -44,9 +47,14 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg-gradient);
-            color: var(--primary-text);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--page-bg);
+            /* classy dark gradient background */
+            background-image: 
+                radial-gradient(circle at 50% 0%, #1e1b4b 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, #172554 0%, transparent 50%);
+            background-attachment: fixed;
+            color: var(--text-main);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -60,93 +68,114 @@
         .card {
             background-color: var(--card-bg);
             width: 100%;
-            max-width: 440px; /* Slightly narrower for mobile focus */
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-card);
-            padding: 2.5rem 2rem;
+            max-width: 460px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-deep);
+            padding: 2.5rem;
             text-align: center;
             position: relative;
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            border: 1px solid var(--border-light);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Decorative top accent */
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 6px;
-            background: linear-gradient(90deg, var(--primary-blue), var(--accent-green));
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Header Section */
         header {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         h1 {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary-text);
-            margin-bottom: 0.25rem;
-            letter-spacing: -0.025em;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .subtitle {
-            font-size: 0.875rem;
-            color: var(--secondary-text);
+            font-size: 0.85rem;
+            color: var(--text-muted);
             font-weight: 500;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .subtitle svg {
+            color: var(--primary);
         }
 
         /* Star Rating Visual */
         .stars {
             display: flex;
             justify-content: center;
-            gap: 6px;
-            margin-bottom: 1.5rem;
-            color: #FBBF24;
-            filter: drop-shadow(0 2px 4px rgba(251, 191, 36, 0.3));
+            gap: 8px;
+            margin-bottom: 2rem;
+            color: #fbbf24; /* Amber 400 */
         }
 
         .star-icon {
             width: 28px;
             height: 28px;
             fill: currentColor;
+            filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.4));
+            transition: transform 0.2s;
+        }
+        
+        .star-icon:hover {
+            transform: scale(1.1);
         }
 
         /* Review Text Area Container */
         .review-wrapper {
             position: relative;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
         }
 
         .review-textarea {
             width: 100%;
-            min-height: 140px;
-            padding: 1.25rem;
-            border: 2px solid var(--border-color);
-            border-radius: var(--btn-radius);
+            min-height: 120px; /* Start smaller, expand as needed */
+            padding: 1.5rem;
+            padding-right: 3.5rem; /* Space for refresh button */
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
             font-family: inherit;
-            font-size: 1rem;
-            color: var(--primary-text);
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--text-main);
             background-color: var(--input-bg);
-            resize: none; /* Fixed size for cleaner look */
+            
+            /* No Scrollbar Logic */
+            resize: none;
+            overflow-y: hidden;
+            
             line-height: 1.6;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .review-textarea:focus {
             outline: none;
-            border-color: var(--primary-blue);
-            background-color: #fff;
-            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+            background-color: rgba(30, 41, 59, 0.8);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 1px var(--primary), inset 0 2px 4px rgba(0,0,0,0.2);
         }
 
+        .review-textarea::placeholder {
+            color: var(--text-dim);
+        }
+
+        /* Fade Animation for Text */
         .fade-in {
             animation: fadeIn 0.4s ease-out;
         }
@@ -156,13 +185,13 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Refresh Button (Floating inside textarea area) */
+        /* Refresh Button (Floating) */
         .refresh-btn {
             position: absolute;
-            bottom: 30px; /* Above disclaimer */
-            right: 10px;
-            background: rgba(255, 255, 255, 0.9);
-            border: 1px solid var(--border-color);
+            top: 1.25rem; /* Align to top right */
+            right: 1.25rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-light);
             border-radius: 50%;
             width: 32px;
             height: 32px;
@@ -170,33 +199,35 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            color: var(--secondary-text);
-            transition: all 0.2s;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            color: var(--text-muted);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 10;
         }
         
         .refresh-btn:hover {
-            color: var(--primary-blue);
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.1);
             transform: rotate(180deg);
-            border-color: var(--primary-blue);
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
         /* Disclaimer */
         .disclaimer {
-            font-size: 0.75rem;
-            color: var(--secondary-text);
-            margin-top: 0.5rem;
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            margin-top: 0.75rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 4px;
+            font-weight: 500;
+            letter-spacing: 0.02em;
         }
 
         /* Actions Grid */
         .actions {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 16px;
             margin-top: 1rem;
         }
 
@@ -205,81 +236,82 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            padding: 0.875rem 1rem;
-            font-size: 0.95rem;
+            padding: 1rem;
+            font-size: 1rem;
             font-weight: 600;
-            border-radius: var(--btn-radius);
+            border-radius: 999px; /* Pill shape */
             border: none;
             cursor: pointer;
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            gap: 8px;
+            gap: 10px;
             text-decoration: none;
-            position: relative;
-            overflow: hidden;
+            letter-spacing: 0.01em;
         }
 
         .btn:active {
-            transform: scale(0.98);
+            transform: scale(0.97) !important;
         }
 
         /* Primary: Copy */
         .btn-primary {
-            background-color: var(--primary-blue);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
-            box-shadow: var(--shadow-btn);
+            box-shadow: 0 0 20px -5px var(--primary-glow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .btn-primary:hover {
-            background-color: var(--primary-blue-hover);
-            transform: translateY(-1px);
-            box-shadow: 0 6px 10px -1px rgba(59, 130, 246, 0.3);
+            filter: brightness(110%);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px var(--primary-glow);
         }
 
         /* Secondary: Maps */
         .btn-secondary {
-            background-color: #fff;
-            color: var(--primary-text);
-            border: 2px solid var(--border-color);
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-light);
         }
 
         .btn-secondary:hover {
-            border-color: #D1D5DB;
-            background-color: #F9FAFB;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.2);
         }
 
-        /* Tertiary: Generate New (Text Link style) */
+        /* Tertiary: Generate New */
         .btn-ghost {
             background: transparent;
-            color: var(--secondary-text);
+            color: var(--text-muted);
             font-size: 0.85rem;
             padding: 0.5rem;
             font-weight: 500;
+            border-radius: var(--radius-sm);
         }
 
         .btn-ghost:hover {
-            color: var(--primary-blue);
-            background: rgba(59, 130, 246, 0.05);
+            color: var(--text-main);
         }
 
-        /* Copy Success Feedback */
+        /* Toast */
         .toast {
             position: fixed;
-            top: 20px;
+            top: 24px;
             left: 50%;
-            transform: translateX(-50%) translateY(-100%);
-            background-color: #064E3B; /* Darker green for readability */
-            color: white;
+            transform: translateX(-50%) translateY(-150%);
+            background-color: #064E3B; /* Emerald 900 */
+            color: #D1FAE5; /* Emerald 100 */
             padding: 0.75rem 1.5rem;
             border-radius: 99px;
-            font-size: 0.875rem;
+            font-size: 0.9rem;
             font-weight: 600;
             opacity: 0;
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border: 1px solid #059669;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             pointer-events: none;
             display: flex;
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            gap: 10px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
             z-index: 50;
         }
 
@@ -297,22 +329,25 @@
 
         /* Footer */
         footer {
-            margin-top: 2rem;
+            margin-top: 2.5rem;
             text-align: center;
             font-size: 0.75rem;
-            color: #9CA3AF;
+            color: var(--text-dim);
+            font-weight: 500;
+            opacity: 0.8;
         }
 
         /* Mobile Adjustments */
         @media (max-width: 480px) {
             body {
                 padding: 1rem;
-                justify-content: flex-start; /* Align top on mobile */
             }
             .card {
-                margin-top: 1rem;
                 padding: 1.5rem;
-                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+                border-radius: 20px;
+            }
+            h1 {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -324,14 +359,14 @@
         <svg class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
         </svg>
-        Review copied to clipboard!
+        Copied to clipboard!
     </div>
 
     <main class="card">
         <header>
             <h1>ENGLISHJIBI Classes</h1>
             <div class="subtitle">
-                <svg class="icon" style="width:16px;height:16px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg class="icon" style="width:18px;height:18px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
@@ -349,17 +384,17 @@
         </div>
 
         <div class="review-wrapper">
-            <textarea id="reviewText" class="review-textarea" placeholder="Your review will appear here..."></textarea>
+            <textarea id="reviewText" class="review-textarea" placeholder="Generating review..." rows="1"></textarea>
             
             <!-- Quick Regenerate Icon Button -->
             <div id="btnRefresh" class="refresh-btn" title="Generate new review">
-                <svg style="width:16px;height:16px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg style="width:18px;height:18px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                 </svg>
             </div>
             
             <div class="disclaimer">
-                <span>You can edit the text above.</span>
+                <span>Edit text as needed before posting</span>
             </div>
         </div>
 
@@ -369,7 +404,7 @@
                 <svg class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
                 </svg>
-                Copy Review
+                Copy Text
             </button>
 
             <!-- Google Maps Link -->
@@ -383,7 +418,7 @@
 
             <!-- Text Link for Regeneration -->
             <button id="btnGenerate" class="btn btn-ghost">
-                Or generate a different review
+                Generate different review
             </button>
         </div>
     </main>
@@ -470,6 +505,14 @@
         // --- FUNCTIONS ---
 
         /**
+         * Auto-resize the text area to fit content (No scrollbars)
+         */
+        function autoResize() {
+            dom.textarea.style.height = 'auto'; // Reset height
+            dom.textarea.style.height = dom.textarea.scrollHeight + 'px'; // Set to fit content
+        }
+
+        /**
          * Helper to get a random index that isn't the one just used
          */
         function getUniqueIndex(max, exclude) {
@@ -482,18 +525,10 @@
         }
 
         /**
-         * Generates a random review with variable structures to ensure
-         * shortness and variety (avoiding similar patterns).
+         * Generates a random review with variable structures
          */
         function generateReview() {
             // Randomly choose a structure to vary length and flow.
-            // We favor 2-sentence reviews (80% chance) over 3-sentence reviews (20% chance)
-            // to keep things short and authentic.
-            // 0: Opener + Body + Closer (Classic, 3 sentences)
-            // 1: Opener + Body (Direct, 2 sentences)
-            // 2: Body + Closer (Action oriented, 2 sentences)
-            // 3: Opener + Closer (Short & punchy, 2 sentences)
-            
             const r = Math.random();
             let structureType;
             
@@ -515,7 +550,6 @@
 
             // 2. Select Body
             if (structureType === 0 || structureType === 1 || structureType === 2) {
-                // Find an index not used in the immediate previous generation
                 let bodyIdx;
                 do {
                     bodyIdx = Math.floor(Math.random() * bodies.length);
@@ -540,6 +574,9 @@
             const fullReview = reviewParts.join(' ');
             dom.textarea.value = fullReview;
             
+            // Auto resize height
+            autoResize();
+
             // Trigger Fade In Animation
             dom.textarea.classList.remove('fade-in');
             void dom.textarea.offsetWidth; // trigger reflow
@@ -557,7 +594,6 @@
             dom.textarea.setSelectionRange(0, 99999); // For mobile devices
 
             // 2. Try the older, more permissive API first (execCommand)
-            // It works great for inputs/textareas and avoids iframe permission issues.
             try {
                 const success = document.execCommand('copy');
                 if (success) {
@@ -568,7 +604,7 @@
                 // Continue to fallback
             }
 
-            // 3. Fallback to modern API if execCommand didn't work
+            // 3. Fallback to modern API
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(text)
                     .then(() => showToast())
@@ -588,28 +624,31 @@
 
         // --- EVENT LISTENERS ---
 
-        // 1. Load: Generate initial review and set Map link
+        // 1. Load: Generate initial review
         window.addEventListener('DOMContentLoaded', () => {
             generateReview();
             dom.btnMaps.href = MAPS_URL;
         });
 
-        // 2. Click: Generate new review (Main Button)
+        // 2. Auto-resize on manual input
+        dom.textarea.addEventListener('input', autoResize);
+
+        // 3. Click: Generate new review (Main Button)
         dom.btnGenerate.addEventListener('click', (e) => {
             e.preventDefault();
             generateReview();
         });
 
-        // 3. Click: Generate new review (Icon Button)
+        // 4. Click: Generate new review (Icon Button)
         dom.btnRefresh.addEventListener('click', (e) => {
              e.preventDefault();
              generateReview();
         });
 
-        // 4. Click: Copy text
+        // 5. Click: Copy text
         dom.btnCopy.addEventListener('click', copyToClipboard);
 
-        // 5. Click: Go to Maps
+        // 6. Click: Go to Maps
         dom.btnMaps.addEventListener('click', () => {
             // Optional: Tracking or auto-copy could go here
         });
