@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review ENGLISHJIBI Classes</title>
+    <meta name="description" content="Quickly write a review for Krishna Tuition - ENGLISHJIBI Classes">
+    <meta name="theme-color" content="#ffffff">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Refined Color Palette */
+            --primary-blue: #3B82F6;
+            --primary-blue-hover: #2563EB;
+            --primary-text: #111827;
+            --secondary-text: #6B7280;
+            --accent-green: #10B981;
+            
+            /* Background Gradients */
+            --bg-gradient: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%);
+            --card-bg: #FFFFFF;
+            
+            /* UI Elements */
+            --border-radius: 16px;
+            --btn-radius: 12px;
+            --input-bg: #F9FAFB;
+            --border-color: #E5E7EB;
+            
+            /* Shadows */
+            --shadow-card: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-btn: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--primary-text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            line-height: 1.5;
+        }
+
+        /* Main Container Card */
+        .card {
+            background-color: var(--card-bg);
+            width: 100%;
+            max-width: 440px; /* Slightly narrower for mobile focus */
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-card);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        /* Decorative top accent */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-green));
+        }
+
+        /* Header Section */
+        header {
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-text);
+            margin-bottom: 0.25rem;
+            letter-spacing: -0.025em;
+        }
+
+        .subtitle {
+            font-size: 0.875rem;
+            color: var(--secondary-text);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        /* Star Rating Visual */
+        .stars {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 1.5rem;
+            color: #FBBF24;
+            filter: drop-shadow(0 2px 4px rgba(251, 191, 36, 0.3));
+        }
+
+        .star-icon {
+            width: 28px;
+            height: 28px;
+            fill: currentColor;
+        }
+
+        /* Review Text Area Container */
+        .review-wrapper {
+            position: relative;
+            margin-bottom: 1.25rem;
+        }
+
+        .review-textarea {
+            width: 100%;
+            min-height: 140px;
+            padding: 1.25rem;
+            border: 2px solid var(--border-color);
+            border-radius: var(--btn-radius);
+            font-family: inherit;
+            font-size: 1rem;
+            color: var(--primary-text);
+            background-color: var(--input-bg);
+            resize: none; /* Fixed size for cleaner look */
+            line-height: 1.6;
+            transition: all 0.2s ease;
+        }
+
+        .review-textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            background-color: #fff;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Refresh Button (Floating inside textarea area) */
+        .refresh-btn {
+            position: absolute;
+            bottom: 30px; /* Above disclaimer */
+            right: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--secondary-text);
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .refresh-btn:hover {
+            color: var(--primary-blue);
+            transform: rotate(180deg);
+            border-color: var(--primary-blue);
+        }
+
+        /* Disclaimer */
+        .disclaimer {
+            font-size: 0.75rem;
+            color: var(--secondary-text);
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        /* Actions Grid */
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 0.875rem 1rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: var(--btn-radius);
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            gap: 8px;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Primary: Copy */
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: white;
+            box-shadow: var(--shadow-btn);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-blue-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 10px -1px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Secondary: Maps */
+        .btn-secondary {
+            background-color: #fff;
+            color: var(--primary-text);
+            border: 2px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            border-color: #D1D5DB;
+            background-color: #F9FAFB;
+        }
+
+        /* Tertiary: Generate New (Text Link style) */
+        .btn-ghost {
+            background: transparent;
+            color: var(--secondary-text);
+            font-size: 0.85rem;
+            padding: 0.5rem;
+            font-weight: 500;
+        }
+
+        .btn-ghost:hover {
+            color: var(--primary-blue);
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        /* Copy Success Feedback */
+        .toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100%);
+            background-color: #064E3B; /* Darker green for readability */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 99px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            z-index: 50;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Icons */
+        .icon {
+            width: 20px;
+            height: 20px;
+            stroke-width: 2;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #9CA3AF;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem;
+                justify-content: flex-start; /* Align top on mobile */
+            }
+            .card {
+                margin-top: 1rem;
+                padding: 1.5rem;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Success Toast -->
+    <div id="toast" class="toast">
+        <svg class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+        </svg>
+        Review copied to clipboard!
+    </div>
+
+    <main class="card">
+        <header>
+            <h1>ENGLISHJIBI Classes</h1>
+            <div class="subtitle">
+                <svg class="icon" style="width:16px;height:16px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                Krishna Tuition
+            </div>
+        </header>
+
+        <div class="stars">
+            <!-- 5 Star Icons -->
+            <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+
+        <div class="review-wrapper">
+            <textarea id="reviewText" class="review-textarea" placeholder="Your review will appear here..."></textarea>
+            
+            <!-- Quick Regenerate Icon Button -->
+            <div id="btnRefresh" class="refresh-btn" title="Generate new review">
+                <svg style="width:16px;height:16px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+            </div>
+            
+            <div class="disclaimer">
+                <span>You can edit the text above.</span>
+            </div>
+        </div>
+
+        <div class="actions">
+            <!-- Copy Button -->
+            <button id="btnCopy" class="btn btn-primary">
+                <svg class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                </svg>
+                Copy Review
+            </button>
+
+            <!-- Google Maps Link -->
+            <a id="btnMaps" href="#" class="btn btn-secondary">
+                <svg class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                Open Google Maps
+            </a>
+
+            <!-- Text Link for Regeneration -->
+            <button id="btnGenerate" class="btn btn-ghost">
+                Or generate a different review
+            </button>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 ENGLISHJIBI Classes</p>
+    </footer>
+
+    <script>
+        // --- DATA: Sentence Fragments for Random Generation ---
+        
+        // Expanded dataset for maximum variety (12 Openers)
+        const openers = [
+            "I recently joined Englishjibi Classes and my experience has been outstanding.",
+            "Krishna Tuition is hands down the best place for grammar coaching.",
+            "I had a wonderful experience learning English here.",
+            "Highly impressed with the teaching quality at Englishjibi Classes.",
+            "If you are looking to improve your English skills, this is the right place.",
+            "I'm so glad I chose Krishna Tuition for my English studies.",
+            "Finding a good English tutor is hard, but Krishna Tuition is a gem.",
+            "My search for the perfect grammar class ended here.",
+            "Simply the best decision I made for my academic growth.",
+            "A fantastic institute for anyone serious about learning English.",
+            "Englishjibi Classes has completely changed my perspective on learning.",
+            "I can honestly say this is the premier coaching centre in the area."
+        ];
+
+        // Expanded dataset (15 Body Sentences)
+        const bodies = [
+            "The teacher is incredibly knowledgeable and supportive.",
+            "Sir explains complex grammar concepts in a very simple and clear way.",
+            "The learning environment is very positive and encourages students to ask questions.",
+            "I have seen a significant improvement in my confidence and vocabulary.",
+            "The teaching style is very effective and student-friendly.",
+            "Every doubt is cleared with patience and detailed examples.",
+            "The personalized attention given to each student makes a huge difference.",
+            "Classes are interactive, making learning fun rather than a chore.",
+            "The focus on practical usage of English really helped me.",
+            "I went from being confused to understanding concepts clearly in just a few months.",
+            "The study material and class structure are very well organized.",
+            "Sir takes the time to ensure everyone understands before moving on.",
+            "The atmosphere is very professional yet comfortable for learners.",
+            "I really appreciate the practical examples used during the lectures.",
+            "My writing skills have improved drastically alongside my confidence."
+        ];
+
+        // Expanded dataset (12 Closers)
+        const closers = [
+            "I highly recommend this institute to everyone!",
+            "Definitely a 5-star experience.",
+            "Thank you for the amazing guidance.",
+            "Strongly recommended for anyone wanting to master English.",
+            "Best coaching centre in the area.",
+            "Don't hesitate to join if you want real results.",
+            "Thank you so much for helping me achieve my goals.",
+            "A must-join for students and professionals alike.",
+            "Keep up the great work!",
+            "I am very satisfied with my progress here.",
+            "Five stars are not enough for this quality of teaching!",
+            "Truly a life-changing experience."
+        ];
+
+        // --- STATE MANAGEMENT ---
+        
+        const dom = {
+            textarea: document.getElementById('reviewText'),
+            btnCopy: document.getElementById('btnCopy'),
+            btnGenerate: document.getElementById('btnGenerate'),
+            btnRefresh: document.getElementById('btnRefresh'),
+            btnMaps: document.getElementById('btnMaps'),
+            toast: document.getElementById('toast')
+        };
+
+        const SEARCH_QUERY = "Krishna Tuition";
+        const MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SEARCH_QUERY)}`;
+        
+        // Track history to prevent immediate repetitions
+        let lastIndices = {
+            opener: null,
+            body: [],
+            closer: null
+        };
+
+        // --- FUNCTIONS ---
+
+        /**
+         * Helper to get a random index that isn't the one just used
+         */
+        function getUniqueIndex(max, exclude) {
+            if (max <= 1) return 0;
+            let idx;
+            do {
+                idx = Math.floor(Math.random() * max);
+            } while (idx === exclude);
+            return idx;
+        }
+
+        /**
+         * Generates a random review with variable structures to ensure
+         * shortness and variety (avoiding similar patterns).
+         */
+        function generateReview() {
+            // Randomly choose a structure to vary length and flow.
+            // We favor 2-sentence reviews (80% chance) over 3-sentence reviews (20% chance)
+            // to keep things short and authentic.
+            // 0: Opener + Body + Closer (Classic, 3 sentences)
+            // 1: Opener + Body (Direct, 2 sentences)
+            // 2: Body + Closer (Action oriented, 2 sentences)
+            // 3: Opener + Closer (Short & punchy, 2 sentences)
+            
+            const r = Math.random();
+            let structureType;
+            
+            if (r < 0.20) structureType = 0;      // 20% Chance: 3 sentences
+            else if (r < 0.50) structureType = 1; // 30% Chance: 2 sentences
+            else if (r < 0.80) structureType = 2; // 30% Chance: 2 sentences
+            else structureType = 3;              // 20% Chance: 2 sentences
+
+            let reviewParts = [];
+            
+            // 1. Select Opener
+            if (structureType === 0 || structureType === 1 || structureType === 3) {
+                const openerIdx = getUniqueIndex(openers.length, lastIndices.opener);
+                reviewParts.push(openers[openerIdx]);
+                lastIndices.opener = openerIdx;
+            } else {
+                lastIndices.opener = null; 
+            }
+
+            // 2. Select Body
+            if (structureType === 0 || structureType === 1 || structureType === 2) {
+                // Find an index not used in the immediate previous generation
+                let bodyIdx;
+                do {
+                    bodyIdx = Math.floor(Math.random() * bodies.length);
+                } while (lastIndices.body.includes(bodyIdx)); 
+                
+                reviewParts.push(bodies[bodyIdx]);
+                lastIndices.body = [bodyIdx];
+            } else {
+                lastIndices.body = [];
+            }
+
+            // 3. Select Closer
+            if (structureType === 0 || structureType === 2 || structureType === 3) {
+                const closerIdx = getUniqueIndex(closers.length, lastIndices.closer);
+                reviewParts.push(closers[closerIdx]);
+                lastIndices.closer = closerIdx;
+            } else {
+                lastIndices.closer = null;
+            }
+
+            // Join with spaces
+            const fullReview = reviewParts.join(' ');
+            dom.textarea.value = fullReview;
+            
+            // Trigger Fade In Animation
+            dom.textarea.classList.remove('fade-in');
+            void dom.textarea.offsetWidth; // trigger reflow
+            dom.textarea.classList.add('fade-in');
+        }
+
+        /**
+         * Copies text to clipboard and shows toast feedback
+         */
+        function copyToClipboard() {
+            const text = dom.textarea.value;
+            
+            // 1. Select the text
+            dom.textarea.select();
+            dom.textarea.setSelectionRange(0, 99999); // For mobile devices
+
+            // 2. Try the older, more permissive API first (execCommand)
+            // It works great for inputs/textareas and avoids iframe permission issues.
+            try {
+                const success = document.execCommand('copy');
+                if (success) {
+                    showToast();
+                    return;
+                }
+            } catch (err) {
+                // Continue to fallback
+            }
+
+            // 3. Fallback to modern API if execCommand didn't work
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text)
+                    .then(() => showToast())
+                    .catch(err => console.log('Copy failed', err));
+            }
+        }
+
+        /**
+         * Shows a temporary success message
+         */
+        function showToast() {
+            dom.toast.classList.add('show');
+            setTimeout(() => {
+                dom.toast.classList.remove('show');
+            }, 2500);
+        }
+
+        // --- EVENT LISTENERS ---
+
+        // 1. Load: Generate initial review and set Map link
+        window.addEventListener('DOMContentLoaded', () => {
+            generateReview();
+            dom.btnMaps.href = MAPS_URL;
+        });
+
+        // 2. Click: Generate new review (Main Button)
+        dom.btnGenerate.addEventListener('click', (e) => {
+            e.preventDefault();
+            generateReview();
+        });
+
+        // 3. Click: Generate new review (Icon Button)
+        dom.btnRefresh.addEventListener('click', (e) => {
+             e.preventDefault();
+             generateReview();
+        });
+
+        // 4. Click: Copy text
+        dom.btnCopy.addEventListener('click', copyToClipboard);
+
+        // 5. Click: Go to Maps
+        dom.btnMaps.addEventListener('click', () => {
+            // Optional: Tracking or auto-copy could go here
+        });
+
+    </script>
+</body>
+</html>
