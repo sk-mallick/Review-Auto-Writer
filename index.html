@@ -159,6 +159,9 @@
             resize: none;
             overflow-y: hidden;
             
+            /* Read-only appearance */
+            cursor: default;
+            
             line-height: 1.6;
             transition: all 0.3s ease;
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
@@ -384,23 +387,31 @@
         </div>
 
         <div class="review-wrapper">
-            <textarea id="reviewText" class="review-textarea" placeholder="Generating review..." rows="1"></textarea>
+            <!-- Readonly attribute ensures text is safe from accidental edits -->
+            <textarea 
+                id="reviewText" 
+                class="review-textarea" 
+                placeholder="Generating review..." 
+                rows="1" 
+                readonly
+                aria-label="Generated review text"
+            ></textarea>
             
             <!-- Quick Regenerate Icon Button -->
-            <div id="btnRefresh" class="refresh-btn" title="Generate new review">
+            <div id="btnRefresh" class="refresh-btn" title="Generate new review" role="button" aria-label="Regenerate review">
                 <svg style="width:18px;height:18px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                 </svg>
             </div>
             
             <div class="disclaimer">
-                <span>Edit text as needed before posting</span>
+                <span>Suggested review — you may edit it before submitting</span>
             </div>
         </div>
 
         <div class="actions">
             <!-- Copy Button -->
-            <button id="btnCopy" class="btn btn-primary">
+            <button id="btnCopy" class="btn btn-primary" aria-label="Copy review to clipboard">
                 <svg class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
                 </svg>
@@ -408,7 +419,7 @@
             </button>
 
             <!-- Google Maps Link -->
-            <a id="btnMaps" href="#" class="btn btn-secondary">
+            <a id="btnMaps" href="#" class="btn btn-secondary" aria-label="Open Google Maps to post review">
                 <svg class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -417,7 +428,7 @@
             </a>
 
             <!-- Text Link for Regeneration -->
-            <button id="btnGenerate" class="btn btn-ghost">
+            <button id="btnGenerate" class="btn btn-ghost" aria-label="Generate a different review">
                 Generate different review
             </button>
         </div>
@@ -585,30 +596,30 @@
 
         /**
          * Copies text to clipboard and shows toast feedback
+         * Uses modern API first, falls back to legacy execCommand
          */
-        function copyToClipboard() {
+        async function copyToClipboard() {
             const text = dom.textarea.value;
             
-            // 1. Select the text
-            dom.textarea.select();
-            dom.textarea.setSelectionRange(0, 99999); // For mobile devices
-
-            // 2. Try the older, more permissive API first (execCommand)
             try {
-                const success = document.execCommand('copy');
-                if (success) {
-                    showToast();
-                    return;
-                }
+                // Try modern API first (preferred)
+                await navigator.clipboard.writeText(text);
+                showToast();
             } catch (err) {
-                // Continue to fallback
-            }
-
-            // 3. Fallback to modern API
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(text)
-                    .then(() => showToast())
-                    .catch(err => console.log('Copy failed', err));
+                // Fallback to execCommand for compatibility
+                try {
+                    dom.textarea.select();
+                    dom.textarea.setSelectionRange(0, 99999); // For mobile devices
+                    document.execCommand('copy');
+                    showToast();
+                    
+                    // Deselect to keep it clean (since it's readonly)
+                    if (window.getSelection) {
+                        window.getSelection().removeAllRanges();
+                    }
+                } catch (fallbackErr) {
+                    console.error("Copy failed", fallbackErr);
+                }
             }
         }
 
@@ -628,29 +639,29 @@
         window.addEventListener('DOMContentLoaded', () => {
             generateReview();
             dom.btnMaps.href = MAPS_URL;
+            // Removed automatic copy on load for browser policy compliance
         });
 
-        // 2. Auto-resize on manual input
-        dom.textarea.addEventListener('input', autoResize);
-
-        // 3. Click: Generate new review (Main Button)
+        // 2. Click: Generate new review (Main Button)
         dom.btnGenerate.addEventListener('click', (e) => {
             e.preventDefault();
             generateReview();
+            // Removed automatic copy on generation; user must click Copy
         });
 
-        // 4. Click: Generate new review (Icon Button)
+        // 3. Click: Generate new review (Icon Button)
         dom.btnRefresh.addEventListener('click', (e) => {
              e.preventDefault();
              generateReview();
+             // Removed automatic copy on generation; user must click Copy
         });
 
-        // 5. Click: Copy text
+        // 4. Click: Copy text
         dom.btnCopy.addEventListener('click', copyToClipboard);
 
-        // 6. Click: Go to Maps
+        // 5. Click: Go to Maps
         dom.btnMaps.addEventListener('click', () => {
-            // Optional: Tracking or auto-copy could go here
+            // Optional: Tracking logic
         });
 
     </script>
